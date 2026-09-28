@@ -11,6 +11,8 @@ const quickLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const services = ["Energy Healing", "Life Coaching", "Numerology", "Workshops", "More Services"];
+
 export function SiteFooter() {
   return (
     <footer id="contact" className="bg-forest-deep text-forest-foreground">

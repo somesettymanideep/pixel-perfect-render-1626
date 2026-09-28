@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, Facebook, Instagram, Linkedin, Mail, Menu, Phone, Youtube, X } from "lucide-react";
 import logo from "@/assets/heal-grow-logo.png.asset.json";
 import { cn } from "@/lib/utils";
@@ -9,7 +10,7 @@ const navItems = [
   { label: "Courses", href: "#services" },
   { label: "Resources", href: "#resources" },
   { label: "Blog", href: "#videos" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteHeader() {
@@ -28,11 +29,14 @@ export function SiteHeader() {
       <div className="hidden bg-forest-deep text-forest-foreground md:block">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-6 py-2 text-xs">
           <div className="flex items-center gap-6">
-            <a href="mailto:hello@healandgrow.com" className="flex items-center gap-2 opacity-90 hover:opacity-100">
-              <Mail className="h-3.5 w-3.5 text-gold" /> hello@healandgrow.com
+            <a
+              href="mailto:healandgrowwithpadma@gmail.com"
+              className="flex items-center gap-2 opacity-90 hover:opacity-100"
+            >
+              <Mail className="h-3.5 w-3.5 text-gold" /> healandgrowwithpadma@gmail.com
             </a>
-            <a href="tel:+12545679900" className="flex items-center gap-2 opacity-90 hover:opacity-100">
-              <Phone className="h-3.5 w-3.5 text-gold" /> +1 (254) 567-9900
+            <a href="tel:+919133966553" className="flex items-center gap-2 opacity-90 hover:opacity-100">
+              <Phone className="h-3.5 w-3.5 text-gold" /> +91 91339 66553
             </a>
           </div>
           <div className="flex items-center gap-4">
@@ -66,21 +70,31 @@ export function SiteHeader() {
           </a>
 
           <nav className="hidden items-center gap-8 text-sm font-medium lg:flex">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="nav-link text-foreground/80 hover:text-primary">
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="nav-link text-foreground/80 hover:text-primary"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a key={item.label} href={item.href} className="nav-link text-foreground/80 hover:text-primary">
+                  {item.label}
+                </a>
+              ),
+            )}
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group hidden items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-gold-foreground shadow-soft transition hover:brightness-105 sm:inline-flex"
             >
               Book a Free Session
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
