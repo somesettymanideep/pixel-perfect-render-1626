@@ -110,19 +110,29 @@ export function SiteHeader() {
             <ul className="flex flex-col gap-3 text-sm font-medium">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} onClick={() => setOpen(false)} className="block py-1 text-foreground/80">
-                    {item.label}
-                  </a>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      to={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block py-1 text-foreground/80"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={item.href} onClick={() => setOpen(false)} className="block py-1 text-foreground/80">
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 font-semibold text-gold-foreground"
                 >
                   Book a Free Session <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
