@@ -1,8 +1,15 @@
+import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import logo from "@/assets/heal-grow-logo.png.asset.json";
 
-const quickLinks = ["Home", "About", "Courses", "Resources", "Blog", "Contact"];
-const services = ["Energy Healing", "Life Coaching", "Numerology", "Workshops", "More Services"];
+const quickLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Courses", href: "#services" },
+  { label: "Resources", href: "#resources" },
+  { label: "Blog", href: "#videos" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function SiteFooter() {
   return (
@@ -35,10 +42,16 @@ export function SiteFooter() {
             <h4 className="text-base font-semibold text-gold">Quick Links</h4>
             <ul className="mt-5 space-y-3 text-sm opacity-85">
               {quickLinks.map((l) => (
-                <li key={l}>
-                  <a href="#home" className="transition hover:text-gold">
-                    {l}
-                  </a>
+                <li key={l.label}>
+                  {l.href.startsWith("/") ? (
+                    <Link to={l.href} className="transition hover:text-gold">
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <a href={l.href} className="transition hover:text-gold">
+                      {l.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -61,17 +74,28 @@ export function SiteFooter() {
             <h4 className="text-base font-semibold text-gold">Contact Us</h4>
             <ul className="mt-5 space-y-4 text-sm opacity-85">
               <li className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> +1 (254) 567-9900
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                <a href="tel:+919133966553" className="transition hover:text-gold">
+                  +91 91339 66553
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> hello@healandgrow.com
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                <a
+                  href="mailto:healandgrowwithpadma@gmail.com"
+                  className="break-all transition hover:text-gold"
+                >
+                  healandgrowwithpadma@gmail.com
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <span>
-                  123 Wellness Drive,
+                  Srama Shakti Nagar, Near Sarada Peetam,
                   <br />
-                  New York, NY 10001
+                  Chinnamushidiwada, Visakhapatnam – 531173,
+                  <br />
+                  Andhra Pradesh
                 </span>
               </li>
             </ul>
