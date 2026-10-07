@@ -3,11 +3,13 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "luc
 import logo from "@/assets/heal-grow-logo.png.asset.json";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Courses", href: "#services" },
-  { label: "Resources", href: "#resources" },
-  { label: "Blog", href: "#videos" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Our Services", href: "/services" },
+  { label: "Courses", href: "/courses" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Blog", href: "/#videos" },
   { label: "Contact", href: "/contact" },
 ];
 

@@ -5,11 +5,13 @@ import logo from "@/assets/heal-grow-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Courses", href: "#services" },
-  { label: "Resources", href: "#resources" },
-  { label: "Blog", href: "#videos" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Our Services", href: "/services" },
+  { label: "Courses", href: "/courses" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Blog", href: "/#videos" },
   { label: "Contact", href: "/contact" },
 ];
 
