@@ -272,11 +272,13 @@ function ContactPage() {
                           className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/30"
                         />
                       </div>
+                      {sendError && <p className="text-sm text-destructive">{sendError}</p>}
                       <button
                         type="submit"
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-gold-foreground shadow-soft transition hover:brightness-105 sm:w-auto"
+                        disabled={sending}
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-gold-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
                       >
-                        Send Message
+                        {sending ? "Sending…" : "Send Message"}
                         <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </button>
                     </form>
