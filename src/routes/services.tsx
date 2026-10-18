@@ -505,6 +505,7 @@ function ServicesPage() {
               >
                 Close
               </button>
+              <BuyButton productId={`service-${selectedService.id}`} />
               <Link
                 to="/contact"
                 onClick={() => setSelectedService(null)}

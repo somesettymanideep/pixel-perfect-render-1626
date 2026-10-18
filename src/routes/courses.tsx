@@ -802,6 +802,7 @@ function CoursesPage() {
               >
                 Close
               </button>
+              <BuyButton productId={`course-${selectedCourse.id}`} />
               <Link
                 to="/contact"
                 onClick={() => setSelectedCourse(null)}

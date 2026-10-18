@@ -1,0 +1,18 @@
+insert into public.products (id, kind, title, price_inr) values
+('course-energy-healing','course','Energy Healing',999),
+('course-inner-child-work','course','Inner Child Work',999),
+('course-numerology-reports','course','Numerology Reports & Personal Guidance',999),
+('course-subconscious-mind','course','Subconscious Mind Programming',999),
+('course-coaching-sessions','course','Coaching Sessions',999),
+('course-workshops-online','course','Workshops & Online Courses',999),
+('course-life-coaching','course','Life Coaching',999),
+('course-law-of-attraction','course','Law of Attraction',999),
+('service-aura-reset','service','Aura Reset – Heal from Within',2999),
+('service-ho-oponopono','service','Ho''oponopono (Advanced Hawaiian Healing)',2999),
+('service-innerchild-healing','service','Innerchild Healing (Trauma Healing)',2999),
+('service-ancestral-healing','service','Ancestral Healing (Karma Healing)',2999),
+('service-transformational-healing','service','90 Days Transformational Healing',2999),
+('service-magic-frequency','service','Daily Magic Frequency Balance',2999),
+('service-law-of-attraction','service','Law of Attraction',2999),
+('service-love-alchemy','service','Love Alchemy Academy',2999),
+('service-financial-freedom','service','Financial Freedom Blueprint – 10X Fortune Manifestation',2999);

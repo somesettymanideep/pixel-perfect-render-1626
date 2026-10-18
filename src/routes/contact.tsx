@@ -5,6 +5,7 @@ import { CheckCircle2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Reveal } from "@/components/site/reveal";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -70,8 +71,29 @@ const interests = [
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const f = new FormData(form);
+    const val = (k: string, max: number) => String(f.get(k) || "").trim().slice(0, max);
+    setSending(true);
+    setSendError("");
+    const { error } = await supabase.from("contact_messages").insert({
+      name: val("name", 100),
+      phone: val("phone", 30) || null,
+      email: val("email", 255),
+      interest: val("interest", 100) || null,
+      message: val("message", 2000),
+    });
+    setSending(false);
+    if (error) {
+      setSendError("Sorry, your message couldn't be sent. Please try again or call us.");
+      return;
+    }
+    form.reset();
     setSubmitted(true);
   };
 
@@ -250,11 +272,13 @@ function ContactPage() {
                           className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/30"
                         />
                       </div>
+                      {sendError && <p className="text-sm text-destructive">{sendError}</p>}
                       <button
                         type="submit"
-                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-gold-foreground shadow-soft transition hover:brightness-105 sm:w-auto"
+                        disabled={sending}
+                        className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-gold-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
                       >
-                        Send Message
+                        {sending ? "Sending…" : "Send Message"}
                         <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </button>
                     </form>
