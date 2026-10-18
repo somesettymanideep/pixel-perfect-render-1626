@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BuyButton } from "@/components/site/buy-button";
 import { useState } from "react";
 import {
   ArrowRight,
